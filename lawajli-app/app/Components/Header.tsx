@@ -5,7 +5,7 @@ import headerImg from '../../public/header-car.png'
 export default function Header() {
   return (
     <div className='h-[400px] flex justify-evenly items-center'>
-        <div>
+        <div className='mx-4 flex flex-col justify-center items-center'>
             <h1 className='px-4 text-2xl lg:text-4xl font-bold text-white mb-5'>
                 Hello,<br/>Start a new business with Lawajli<br/>Add car and start work!
             </h1>

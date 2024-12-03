@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="mt-20 blue-gradient h-[240px] w-full flex justify-around items-center p-5">
             <Image src={'/logo.png'} width={160} height={100} alt="logo"/>
             <ul className='flex flex-col justify-end items-center gap-5 font-bold text-white'>
-                <li className='hover:text-orange-300 duration-300'><Link href={"/private"}>PRIVATE</Link></li>
+                <li className='hover:text-orange-300 duration-300'><Link href={"/private-car"}>PRIVATE</Link></li>
                 <li className='hover:text-orange-300 duration-300'><Link href={"/commercial"}>COMMERCIAL</Link></li>
                 <li className='hover:text-orange-300 duration-300'><Link href={"/delivery"}>DELIVERY</Link></li>
                 <li className='hover:text-orange-300 duration-300'><Link href={"/rent"}>RENT CAR</Link></li>
