@@ -24,6 +24,14 @@ body {
   @apply w-[284px] h-[284px] bg-gradient-to-r from-[#1488CC] to-[#2B32B2] rounded-lg
 }
 
+.item {
+  @apply w-[266px] h-[335px] bg-[#F9F9F9] shadow-md rounded-lg rounded-t-3xl
+}
+
 .hover-style {
   @apply  hover:shadow-md hover:bg-gradient-to-l hover:scale-105 duration-500
+}
+
+.btn-orange {
+  @apply bg-[#FF5F05] rounded-md text-white px-4 py-2 font-bold hover:bg-orange-500
 }

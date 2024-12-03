@@ -2,6 +2,7 @@ import Image from "next/image";
 import Nav from "./Components/Nav";
 import Header from "./Components/Header";
 import CatItems from "./Components/CatItems"
+import Item from "./Components/Item";
 
 const catItem = [
   {
@@ -34,8 +35,11 @@ export default function Home() {
         <CatItems key={idx} name={item.name} imgcat={item.image}/>
       ))}
     </div>
-    <div className="w-full min-h-screen flex flex-col justify-center items-center">
-      <h1>Lawajli</h1>
+    <div className="flex justify-center items-center gap-5 flex-wrap mt-10">
+      <Item/>
+      <Item/>
+      <Item/>
+      <Item/>
     </div>
     </>
   );
