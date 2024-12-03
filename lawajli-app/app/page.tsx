@@ -25,7 +25,7 @@ const catItem = [
 export default function Home() {
   return (
     <>
-    <div className="h-[500px] bg-gradient-to-r from-[#1488CC] to-[#2B32B2] mb-5">
+    <div className="h-[500px] bg-gradient-to-r from-[#1488CC] to-[#2B32B2] mb-20">
       <Nav/>
       <Header/>
     </div>

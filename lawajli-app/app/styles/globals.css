@@ -23,3 +23,7 @@ body {
 .cat-item {
   @apply w-[284px] h-[284px] bg-gradient-to-r from-[#1488CC] to-[#2B32B2] rounded-lg
 }
+
+.hover-style {
+  @apply  hover:shadow-md hover:bg-gradient-to-l hover:scale-105 duration-500
+}
