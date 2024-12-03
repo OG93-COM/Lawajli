@@ -13,7 +13,7 @@ export default function Footer() {
                 <li className='hover:text-orange-300 duration-300'><Link href={"/rent"}>RENT CAR</Link></li>
             </ul>
         </div>
-        <div className="footer-style">Designed by OG93 © Copyright Oussama Galai</div>
+        <div className="footer-style">Designed by OG93 © Copyright Oussama Galai</div>
     </>
   )
 }
