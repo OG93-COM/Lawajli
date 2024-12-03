@@ -25,7 +25,7 @@ body {
 }
 
 .cat-item {
-  @apply w-[284px] h-[284px] blue-gradient rounded-lg 
+  @apply w-[284px] h-[284px] blue-gradient rounded-lg
 }
 
 .item {
@@ -33,7 +33,7 @@ body {
 }
 
 .hover-style {
-  @apply  hover:shadow-md hover:bg-gradient-to-l hover:scale-105 duration-500
+  @apply  hover:shadow-md hover:bg-gradient-to-l hover:scale-105 duration-300 transition ease-in
 }
 
 .btn-orange {
