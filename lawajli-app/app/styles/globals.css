@@ -20,12 +20,16 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.blue-gradient {
+  @apply bg-gradient-to-r from-[#1488CC] to-[#2B32B2]
+}
+
 .cat-item {
-  @apply w-[284px] h-[284px] bg-gradient-to-r from-[#1488CC] to-[#2B32B2] rounded-lg
+  @apply w-[284px] h-[284px] blue-gradient rounded-lg 
 }
 
 .item {
-  @apply w-[266px] h-[335px] bg-[#F9F9F9] shadow-md rounded-lg rounded-t-3xl
+  @apply w-[266px] h-[335px] bg-[#F9F9F9] shadow-md rounded-lg rounded-t-3xl hover:shadow-lg duration-300 cursor-pointer
 }
 
 .hover-style {
@@ -34,4 +38,8 @@ body {
 
 .btn-orange {
   @apply bg-[#FF5F05] rounded-md text-white px-4 py-2 font-bold hover:bg-orange-500
+}
+
+.footer-style {
+  @apply flex justify-center items-center bg-[#FF5F05] h-12 text-white font-bold text-sm
 }
