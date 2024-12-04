@@ -17,7 +17,8 @@ export default async function  SignIn() {
       <Nav/>
       <Header/>
     </div>
-    <div className="w-full h-[600px] flex flex-col justify-center items-center">
+    <div className="w-full  flex flex-col justify-start items-center">
+        <h1 className="text-3xl font-bold mb-10">Login to your account</h1>
         <SignInBtn/>
     </div>
     </>

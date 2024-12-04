@@ -5,9 +5,10 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { CiUser, CiSettings } from "react-icons/ci";
-import { AiOutlineLogin } from "react-icons/ai";
+import { AiOutlineLogin, AiOutlineLogout } from "react-icons/ai";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { useSession } from 'next-auth/react';
+import { signOut } from 'next-auth/react';
 
 
 
@@ -43,11 +44,17 @@ export default function Nav() {
         </ul>
         <RxHamburgerMenu className='lg:hidden md:hidden text-white' size={32}/>
         <div className={`absolute menu-popup ${togglePop ? "lg:block md:block" : ""}`}>
-          <Link href={"/sign-in"}>
-            <p className='pb-1 hover:text-orange-500 fic'>
-            <AiOutlineLogin size={18}/> Login
-            </p>
-          </Link>
+          {session ? (
+              <p onClick={()=> signOut()} className='pb-1 hover:text-orange-500 fic cursor-pointer'>
+                <AiOutlineLogout size={18}/> LogOut
+              </p>
+          ):(
+            <Link href={"/sign-in"}>
+              <p className='pb-1 hover:text-orange-500 fic'>
+              <AiOutlineLogin size={18}/> Login
+              </p>
+            </Link>
+          )}
           <Link href={"/dashboard"}>
             <p className='pb-1 hover:text-orange-500 fic'>
               <LuLayoutDashboard size={18}/>Dashboard
