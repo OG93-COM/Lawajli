@@ -20,8 +20,16 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.fic {
+  @apply flex items-center gap-2
+}
+
 .blue-gradient {
   @apply bg-gradient-to-r from-[#1488CC] to-[#2B32B2]
+}
+
+.btn-singin-platform {
+  @apply flex justify-center items-center gap-5 w-[300px] border shadow-sm my-2 p-4 rounded-full hover:text-slate-700 hover:scale-105 duration-200 cursor-pointer
 }
 
 .cat-item {
@@ -45,5 +53,9 @@ body {
 }
 
 .menu-popup {
-  @apply hidden w-[150px] h-[100px] bg-slate-300 rounded-md absolute lg:right-36 right-5 top-20 z-40 shadow-lg opacity-90 p-4 text-sm text-slate-800 font-semibold
+  @apply hidden w-[150px] h-[100px] bg-slate-300 rounded-md lg:right-36 right-5 top-20 z-40 shadow-lg opacity-90 p-4 text-sm text-slate-800 font-semibold
+}
+
+.picture-profile {
+  @apply rounded-full border border-sky-300 shadow-md mx-1 cursor-pointer hover:scale-105 duration-300
 }
