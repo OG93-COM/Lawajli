@@ -4,6 +4,7 @@ import Header from "./Components/Header";
 import CatItems from "./Components/CatItems"
 import Item from "./Components/Item";
 import {catItem, itemPrivate, itemCommercial, itemDelivery, itemRent} from '../data'
+import Link from "next/link";
  
 
 
@@ -16,7 +17,9 @@ export default function Home() {
     </div>
     <div className="flex justify-center items-center flex-wrap gap-4">
       {catItem && catItem.map((itemcat, idx) => (
-        <CatItems key={idx} name={itemcat.name} imgcat={itemcat.image}/>
+        <Link key={idx} href={itemcat.page}>
+          <CatItems name={itemcat.name} imgcat={itemcat.image}/>
+        </Link>
       ))}
     </div>
 

@@ -2,18 +2,22 @@ export const catItem = [
   {
     name: "Private",
     image: "/cat-private.png",
+    page: "private-car"
   },
   {
     name: "Commercial",
     image: "/cat-commercial.png",
+    page: "commercial"
   },
   {
     name: "Delivery",
     image: "/cat-delivery.png",
+    page: "delivery"
   },
   {
     name: "Rent Car",
     image: "/cat-rent.png",
+    page: "rent"
   },
 ];
 
