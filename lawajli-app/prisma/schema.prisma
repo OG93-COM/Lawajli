@@ -92,14 +92,17 @@ model Category {
 
 model Vehicles {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
-  title String
+  vehicleName String
   content String
+  location String
+  destination String
   imgUrl String?
-  publicId String?
-  catName String?
+  phone String
+  catName String
+  price String?
   category Category? @relation(fields: [catName], references: [catName])
-  user User @relation(fields: [userEmail], references: [email])
+  userName User @relation(fields: [userEmail], references: [email])
   userEmail String
-  createdAt DateTime @default(now())
+  createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt
 }
