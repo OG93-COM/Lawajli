@@ -15,7 +15,7 @@ const SignInBtn = () => {
         <FcGoogle size={30} /> Sign In With Google
       </div>
       <div onClick={() => signIn("twitter", { redirectTo: "/dashboard" })} className="btn-singin-platform">
-        <FaXTwitter size={30} /> Sign In With Twitter
+        <FaXTwitter size={30} /> Sign In With X
       </div>
     </>
   );
