@@ -15,6 +15,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  vehicles      Vehicles[]
   // Optional for WebAuthn support
   Authenticator Authenticator[]
  
@@ -85,4 +86,20 @@ model Category {
   catName String @unique
   catImg String
   pageLink String
+  vehicles Vehicles[]
+  postIds String[]  @db.ObjectId
+}
+
+model Vehicles {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  content String
+  imgUrl String?
+  publicId String?
+  catName String?
+  category Category? @relation(fields: [catName], references: [catName])
+  user User @relation(fields: [userEmail], references: [email])
+  userEmail String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
