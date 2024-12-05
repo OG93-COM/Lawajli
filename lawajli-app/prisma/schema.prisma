@@ -79,3 +79,10 @@ model Authenticator {
  
   @@unique([userId, credentialID])
 }
+
+model Category {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  catName String @unique
+  catImg String
+  pageLink String
+}

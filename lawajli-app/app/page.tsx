@@ -1,10 +1,9 @@
 import Image from "next/image";
 import Nav from "./Components/Nav";
 import Header from "./Components/Header";
-import CatItems from "./Components/CatItems"
 import Item from "./Components/Item";
-import {catItem, itemPrivate, itemCommercial, itemDelivery, itemRent} from '../data'
-import Link from "next/link";
+import { itemPrivate, itemCommercial, itemDelivery, itemRent} from '../data'
+import Categories from "./Components/Categories";
  
 
 
@@ -15,13 +14,7 @@ export default function Home() {
       <Nav/>
       <Header/>
     </div>
-    <div className="flex justify-center items-center flex-wrap gap-4">
-      {catItem && catItem.map((itemcat, idx) => (
-        <Link key={idx} href={itemcat.page}>
-          <CatItems name={itemcat.name} imgcat={itemcat.image}/>
-        </Link>
-      ))}
-    </div>
+    <Categories/>
 
     <div className="flex flex-col justify-center lg:mx-48">
       <h2 className="uppercase text-3xl font-bold mt-10 p-4 text-slate-500">Private</h2>
