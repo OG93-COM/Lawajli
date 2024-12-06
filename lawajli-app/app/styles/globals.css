@@ -63,3 +63,7 @@ body {
 .picture-profile {
   @apply rounded-full border border-gray-300 shadow-md mx-1 cursor-pointer hover:scale-105 duration-300
 }
+
+.title-page {
+  @apply mx-10 tracking-tight text-sky-900 text-xl font-semibold
+}
