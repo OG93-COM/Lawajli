@@ -4,7 +4,7 @@ import { AiOutlineLogout } from 'react-icons/ai'
 
 export default function LogoutBtn() {
   return (
-    <button onClick={()=> signOut()} className='btn-gray cursor-pointer fic my-5'>
+    <button onClick={()=> signOut()} className='btn-gray cursor-pointer fic my-2'>
         <AiOutlineLogout size={18}/> LogOut
     </button>
   )

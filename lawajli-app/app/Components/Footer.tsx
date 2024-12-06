@@ -12,6 +12,12 @@ export default function Footer() {
                 <li className='hover:text-orange-300 duration-300'><Link href={"/delivery"}>DELIVERY</Link></li>
                 <li className='hover:text-orange-300 duration-300'><Link href={"/rent"}>RENT CAR</Link></li>
             </ul>
+            <ul className='flex flex-col justify-end items-center gap-5 font-bold text-white uppercase'>
+                <li className='hover:text-orange-300 duration-300'><Link href={"/dashboard"}>Dashboard</Link></li>
+                <li className='hover:text-orange-300 duration-300'><Link href={"/dashboard/new-vehicle"}>Add New Car</Link></li>
+                <li className='hover:text-orange-300 duration-300'><Link href={"/sign-in"}>Login</Link></li>
+                
+            </ul>
         </div>
         <div className="footer-style">Designed by OG93 © Copyright Oussama Galai</div>
     </>
