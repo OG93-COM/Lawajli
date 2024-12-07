@@ -11,7 +11,7 @@ export type TVehicles = {
     userName: string,
     content: string,
     location: string,
-    destination: string,
+    destination: string[],
     phone:string,
     catName: string,
     imgUrl: string,
