@@ -5,8 +5,9 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import { IoLocationOutline } from 'react-icons/io5'
 import Item from './Item'
+import { TVehicles } from '../types'
 
-export default async function ItemDetails({vehicle}) {
+export default function ItemDetails({vehicle}:{vehicle:TVehicles}) {
 
     const [showNumber, setShowNumber] = useState<boolean>(false);
     
@@ -17,16 +18,16 @@ export default async function ItemDetails({vehicle}) {
             <>
                 <div className='w-full flex justify-center flex-wrap gap-5 p-2 '>
             <div className='lg:w-[450px] md:w-[550px] w-full flex justify-center'>
-                <Image src={'/polo8.jpg'} width={550} height={550} alt='Car' className='rounded-3xl'/>
+                <Image src={`${vehicle.imgUrl ? vehicle?.imgUrl : '/polo8.jpg'}`} width={550} height={550} alt='Car' className='rounded-3xl'/>
             </div>
             <div className='lg:w-[450px] md::w-[450px] w-[520px] flex flex-col gap-3 mx-5'>
                 <div className='flex justify-between items-center'>
                     <h2 className='text-3xl'>{vehicle.userName}</h2>
-                    <Image src={'/profile-img.png'} width={60} height={60} alt='profile' className='picture-profile rounded-full'/>
+                    <Image src={`${vehicle.userImg ? vehicle?.userImg : "/profile-img.png"}`} width={60} height={60} alt='profile' className='picture-profile rounded-full'/>
                 </div>
                     <p className='text-md font-bold text-gray-600 flex justify-start items-center gap-1'><IoLocationOutline />{vehicle.location}</p>
                     <p className='text-l'><span className='font-bold'>Vehicle: </span>{vehicle.vehicleName}</p>
-                    <p className='text-l'><span className='font-bold'>Destination: </span>{(vehicle.destination).join(' ')}</p>
+                    <p className='text-l'><span className='font-bold'>Destination: </span>{vehicle.destination && (vehicle?.destination).join(', ')}</p>
                     <p className='text-l'>
                         <span className='font-bold'>Tel: </span>
                         {showNumber ? <span>{vehicle.phone}</span> : <span onClick={()=> setShowNumber(!showNumber)} className='text-sm text-orange-600 cursor-pointer  animate-pulse'>Show Phone Number</span>}

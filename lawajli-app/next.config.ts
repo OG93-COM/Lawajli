@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
         hostname: "pbs.twimg.com",
         pathname: "**"
       },
+      {
+        protocol: "https",
+        hostname: "s3.caroom.fr",
+        pathname: "**"
+      },
     ],
     deviceSizes:[300,420,768,1024,1200],
     imageSizes: [8,16,32,48,64,96],
