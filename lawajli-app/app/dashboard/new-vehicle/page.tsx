@@ -11,11 +11,10 @@ export default async function NewVehicle() {
     const session = await auth();
 
     if(!session) {
-        redirect("/")
+        redirect("/sign-in")
     }
   return (
     <>
-    
     <div className="w-full h-[600px] flex flex-col justify-center items-center">
         <AddNewCar/>
     </div>

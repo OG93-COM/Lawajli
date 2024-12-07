@@ -86,23 +86,20 @@ model Category {
   catName String @unique
   catImg String
   pageLink String
-  vehicles Vehicles[]
-  postIds String[]  @db.ObjectId
 }
 
 model Vehicles {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
   vehicleName String
-  content String
+  userName User @relation(fields: [userEmail], references: [email])
+  phone String
   location String
   destination String
   imgUrl String?
-  phone String
+  content String
   catName String
-  price String?
-  category Category? @relation(fields: [catName], references: [catName])
-  userName User @relation(fields: [userEmail], references: [email])
   userEmail String
+  status String[]
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt
 }
