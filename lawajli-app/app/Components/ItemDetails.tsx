@@ -25,7 +25,9 @@ export default function ItemDetails({vehicle}:{vehicle:TVehicles}) {
                     <h2 className='text-3xl'>{vehicle.userName}</h2>
                     <Image src={`${vehicle.userImg ? vehicle?.userImg : "/profile-img.png"}`} width={60} height={60} alt='profile' className='picture-profile rounded-full'/>
                 </div>
-                    <p className='text-md font-bold text-gray-600 flex justify-start items-center gap-1'><IoLocationOutline />{vehicle.location}</p>
+                    <p className='text-md font-bold text-orange-500 flex justify-start items-center gap-1'>
+                        <span className='animate-bounce'><IoLocationOutline /></span>{vehicle.location}
+                    </p>
                     <p className='text-l'><span className='font-bold'>Vehicle: </span>{vehicle.vehicleName}</p>
                     <p className='text-l'><span className='font-bold'>Destination: </span>{vehicle.destination && (vehicle?.destination).join(', ')}</p>
                     <p className='text-l'>

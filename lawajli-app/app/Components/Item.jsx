@@ -12,7 +12,7 @@ export default function Item({car, imgcar, location, clientName}) {
         <div className='w-full flex justify-between items-start pt-2 px-3'>
             <div>
                 <p className='text-gray-600 font-semibold fic'><IoCarSportOutline />{car}</p>
-                <p className='text-gray-600 text-sm fic gap-2'><TbUserPentagon/> {clientName}</p>
+                <p className='text-gray-600 text-sm mt-1 fic gap-2'><TbUserPentagon/> {clientName}</p>
                 <p className='text-gray-600 text-sm mt-3 cursor-pointer hover:text-orange-400'>View Details</p>
             </div>
             <p className='text-xs font-bold text-gray-600 flex justify-end items-center gap-1'><IoLocationOutline />{location}</p>
