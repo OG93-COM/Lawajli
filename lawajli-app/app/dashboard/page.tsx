@@ -24,6 +24,7 @@ export default async function Dashboard() {
               <div className='text-center'>Add Your Car</div>
             </Link>
         <LogoutBtn/>
+        
     </div>
     </>
   )

@@ -6,8 +6,8 @@ import { TbUserPentagon } from "react-icons/tb";
 export default function Item({car, imgcar, location, clientName}) {
   return (
     <div className='item flex flex-col justify-start items-center'>
-        <div className='rounded-t-full'>
-            <Image src={imgcar} width={266} height={229} alt='name'/>
+        <div className='relative rounded-t-full h-[229px] '>
+            <Image src={imgcar} width={266} height={229} alt='name' className="w-[266px] h-[229px] object-cover"/>
         </div>
         <div className='w-full flex justify-between items-start pt-2 px-3'>
             <div>
