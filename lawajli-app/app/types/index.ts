@@ -17,7 +17,7 @@ export type TVehicles = {
     catName: string,
     userEmail: string,
     userImg?: string,
-    status: ["Active","Pending","Disabled"],
+    status: "Active" | "Pending" | "Disabled",
     publicId: string,
     createdAt: string,
 }

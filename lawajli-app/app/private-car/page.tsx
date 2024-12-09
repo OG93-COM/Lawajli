@@ -1,6 +1,7 @@
 import React from 'react'
 import Item from '../Components/Item'
 import axios from 'axios';
+import { TVehicles } from '../types';
 
 const getAllVehicle = async () => {
   try {
@@ -16,14 +17,14 @@ const getAllVehicle = async () => {
 
 export default async function PrivateCar() {
   const allVehicles = await getAllVehicle()
-  const allPrivateVehicles = await allVehicles.filter((car) => car.catName === "Private")
+  const allPrivateVehicles = await allVehicles.filter((car:TVehicles) => car.catName === "Private")
   
   return (
 
     <div className="flex flex-col justify-center lg:mx-48">
       <h2 className="uppercase text-3xl font-bold mt-10 p-4 text-slate-500">Private</h2>
       <div className="flex justify-center items-center gap-5 flex-wrap mt-2">
-      {allPrivateVehicles && allPrivateVehicles.map((item, idx) => (
+      {allPrivateVehicles && allPrivateVehicles.map((item:TVehicles, idx:string) => (
           <Item
           key={idx}
           id={item.id}

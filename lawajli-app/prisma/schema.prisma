@@ -104,7 +104,7 @@ model Vehicles {
   userEmail String
   userName String
   userImg String
-  status String[]
+  status String @default("Pending")
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt
 }

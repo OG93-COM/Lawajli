@@ -20,10 +20,11 @@ export async function POST(req: Request) {
     //     return NextResponse.json({error:"not authentificated"},{status:401})
     // }
 
-    const {vehicleName, phone, location, destination, content, imgUrl, selectedCategory, publicId } = await req.json()
-    const userEmail = session?.user?.email as string
-    const userName = session?.user?.name as string
-
+    const {vehicleName, phone, location, destination, content, imgUrl, selectedCategory, publicId, userEmail, userName, userImg } = await req.json()
+    // const userEmail = session?.user?.email as string
+    // const userName = session?.user?.name as string
+    // const userImg = session?.user?.image as string
+    
     if(!vehicleName || !phone || !location || !content) {
         return NextResponse.json({error:"Vehicle and Content Are Required"},{status:500})
     }
@@ -41,6 +42,8 @@ export async function POST(req: Request) {
                 catName: selectedCategory,
                 userEmail,
                 userName,
+                userImg,
+                status: "Pending"
             }
         })
         console.log("Vehicle Created 📝")
