@@ -1,27 +1,45 @@
+"use client"
+
 import { TCategory } from '@/app/types';
 import axios from 'axios';
 import Image from 'next/image';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaRegImages } from 'react-icons/fa';
 
-const getDataCat = async () => {
-    try {
-      const res = await axios.get(`${process.env.NEXTAUTH_URL}/api/categories`);
-      if (res.status === 200) {
-        return res.data;
-      }
-    } catch (error) {
-      console.log("Erro Fetch DaTA Front ", error);
-    }
-    return null;
-  };
 
-export default async function AddNewCar() {
 
-    const categoryList = await getDataCat();
+export default function AddNewCar() {
+
+    const [title, setTitle] = useState("");
+    const [phone, setPhone] = useState("");
+    const [location, setLocation] = useState("");
+    const [destination, setDestination] = useState("");
+    const [content, setContent] = useState("");
+    const [imgUrl, setImgUrl] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState("");
+    const [publicId, setPublicId] = useState("");
+    const [categoryList, setCategoryList] = useState<TCategory[]>([])
+    const [error, setError] = useState("");
+
+    useEffect(()=>{
+      const getDataCat = async () => {
+        try {
+          const res = await axios.get("/api/categories");
+          if (res.status === 200) {
+            setCategoryList(res.data);
+          }
+        } catch (error) {
+          console.log("Erro Fetch DaTA Front ", error);
+        }
+        return null;
+      };
+      getDataCat()
+    },[])
+
+    console.log(categoryList)
 
   return (
-    <div className='min-w-[500px] w-[600px]'>
+    <div className='min-w-[500px] w-[600px] tic'>
     <h1 className="title-page">Add new car</h1>
     <form className="p-6" >
       <input
@@ -34,32 +52,25 @@ export default async function AddNewCar() {
       <div className='flex gap-2'>
         <input
             className="shadow appearance-none border rounded mt-4 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="fullname"
-            type="text"
-            placeholder="Your Name Here... (Optional)"
-            />
-        <input
-            className="shadow appearance-none border rounded mt-4 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="phone"
             type="number"
             placeholder="Phone Number..." required
             />
-      </div>
-
-      <div className='flex gap-2'>
-        <input
+            <input
             className="shadow appearance-none border rounded mt-4 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="location"
             type="text"
             placeholder="Your Location Here... Exp : Bizerte" required
             />
+      </div>
+
+        
         <input
             className="shadow appearance-none border rounded mt-4 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="destination"
             type="text"
             placeholder="Prefered Destination..."
             />
-      </div>
 
         <div className="flex flex-col justify-center items-center gap-2 hover:scale-105 duration-300 bg-orange-50 h-28 w-full mt-4 text-orange-400 font-semibold text-xs rounded-xl border border-orange-300 border-dashed cursor-pointer">
              <FaRegImages size={24} /> Upload Image for the post

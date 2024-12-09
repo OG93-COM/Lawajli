@@ -100,6 +100,7 @@ model Vehicles {
   imgUrl String?
   content String
   catName String
+  publicId String?
   userEmail String
   userName String
   userImg String

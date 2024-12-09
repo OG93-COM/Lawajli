@@ -46,7 +46,7 @@ export default function ItemDetails({vehicle}:{vehicle:TVehicles}) {
             <h2 className="uppercase text-3xl font-bold mt-10 p-4 text-slate-500">Related</h2>
             <div className="flex justify-center items-center gap-5 flex-wrap mt-2">
             {itemPrivate && itemPrivate.map((item, idx) => (
-                <Item key={idx} car={item.car} imgcar={item.image} location={item.location} clientName={item.clientName}/>
+                <Item  key={idx} car={item.car} imgcar={item.image} location={item.location} clientName={item.clientName} category={item.car}/>
                 ))}
             </div>
         </div>
