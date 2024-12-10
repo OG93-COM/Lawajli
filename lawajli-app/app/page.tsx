@@ -6,7 +6,7 @@ import { itemPrivate, itemCommercial, itemDelivery, itemRent} from '../data'
 import Categories from "./Components/Categories";
 import axios from "axios";
 import { TVehicles } from "./types";
- 
+
 
 const getAllVehicle = async () => {
   try {
