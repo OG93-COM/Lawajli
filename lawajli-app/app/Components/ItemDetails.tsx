@@ -18,7 +18,7 @@ export default function ItemDetails({vehicle}:{vehicle:TVehicles}) {
             <>
                 <div className='w-full flex justify-center flex-wrap gap-5 p-2 '>
             <div className='lg:w-[450px] md:w-[550px] w-full flex justify-center'>
-                <Image src={`${vehicle.imgUrl ? vehicle?.imgUrl : '/polo8.jpg'}`} width={550} height={550} alt='Car' className='rounded-3xl'/>
+                <Image src={`${vehicle.imgUrl ? vehicle?.imgUrl : '/photo-vehicle.png'}`} width={550} height={550} alt='Car' className='rounded-3xl'/>
             </div>
             <div className='lg:w-[450px] md::w-[450px] w-[520px] flex flex-col gap-3 mx-5'>
                 <div className='flex justify-between items-center'>

@@ -25,13 +25,15 @@ export default function Item({car, imgcar, location, clientName, category, id}) 
             <Image src={`${imgcar ? imgcar : "/photo-vehicle.png"}`} width={266} height={229} alt='name' className="w-[266px] h-[229px] object-cover"/>
         </div>
         <div className='w-full flex justify-between items-start pt-2 px-3'>
-            <div>
+            <div className='max-w-[120px]'>
                 <p className='text-gray-600 font-semibold fic text-nowrap overflow-hidden text-ellipsis'><IoCarSportOutline />{car}</p>
                 <p className='text-gray-600 text-sm mt-1 fic gap-2 text-nowrap overflow-hidden text-ellipsis'><TbUserPentagon/> {clientName}</p>
                 <p className='text-gray-600 text-sm mt-3 cursor-pointer hover:text-orange-400'>View Details</p>
             </div>
-            <p className='text-xs font-bold text-gray-600 flex justify-end items-center gap-1 text-nowrap overflow-hidden text-ellipsis '><IoLocationOutline />{location}</p>
-
+            <div className='text-gray-600 flex justify-end items-center gap-1 mt-2'>
+              <IoLocationOutline size={14}/>
+              <p className='max-w-[80px] text-xs font-bold text-nowrap overflow-hidden text-ellipsis'>{location}</p>
+            </div>
         </div>
     </Link>
   )
