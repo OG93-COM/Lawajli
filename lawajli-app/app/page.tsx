@@ -25,10 +25,10 @@ export default async function Home() {
 
   const allVehicles = await getAllVehicle()
   const activeVehicles = await allVehicles.filter((allCar:TVehicles) => allCar.status === "Active")
-  const allPrivateVehicles = await activeVehicles.filter((car:TVehicles) => car.catName === "Private")
-  const allCommercialVehicles = await activeVehicles.filter((car:TVehicles) => car.catName === "Commercial" )
-  const allDeliveryVehicles = await activeVehicles.filter((car:TVehicles) => car.catName === "Delivery")
-  const allRentVehicles = await activeVehicles.filter((car:TVehicles) => car.catName === "Rent")
+  const allPrivateVehicles = await activeVehicles.filter((car:TVehicles) => car.catName === "private")
+  const allCommercialVehicles = await activeVehicles.filter((car:TVehicles) => car.catName === "commercial" )
+  const allDeliveryVehicles = await activeVehicles.filter((car:TVehicles) => car.catName === "delivery")
+  const allRentVehicles = await activeVehicles.filter((car:TVehicles) => car.catName === "rent")
 
   return (
     <>

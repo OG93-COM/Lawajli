@@ -7,13 +7,13 @@ import { TbUserPentagon } from "react-icons/tb";
 export default function Item({car, imgcar, location, clientName, category, id}) {
 
   const selectedCat = ()=>{
-    if(category === "Private"){
+    if(category === "Private" ||  category === "private"){
       return "private-car"
-    }else if(category === "Commercial"){
+    }else if(category === "Commercial" || category === "commercial"){
       return "commercial"
-    }else if(category === "Delivery"){
+    }else if(category === "Delivery" || category === "delivery"){
       return "delivery"
-    }else if(category === "Rent"){
+    }else if(category === "Rent" || category === "rent"){
       return "rent"
     }
   }
@@ -26,11 +26,11 @@ export default function Item({car, imgcar, location, clientName, category, id}) 
         </div>
         <div className='w-full flex justify-between items-start pt-2 px-3'>
             <div>
-                <p className='text-gray-600 font-semibold fic'><IoCarSportOutline />{car}</p>
-                <p className='text-gray-600 text-sm mt-1 fic gap-2'><TbUserPentagon/> {clientName}</p>
+                <p className='text-gray-600 font-semibold fic text-nowrap overflow-hidden text-ellipsis'><IoCarSportOutline />{car}</p>
+                <p className='text-gray-600 text-sm mt-1 fic gap-2 text-nowrap overflow-hidden text-ellipsis'><TbUserPentagon/> {clientName}</p>
                 <p className='text-gray-600 text-sm mt-3 cursor-pointer hover:text-orange-400'>View Details</p>
             </div>
-            <p className='text-xs font-bold text-gray-600 flex justify-end items-center gap-1'><IoLocationOutline />{location}</p>
+            <p className='text-xs font-bold text-gray-600 flex justify-end items-center gap-1 text-nowrap overflow-hidden text-ellipsis '><IoLocationOutline />{location}</p>
 
         </div>
     </Link>

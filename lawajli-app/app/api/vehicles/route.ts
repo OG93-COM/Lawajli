@@ -16,14 +16,16 @@ export async function GET(){
 export async function POST(req: Request) {
 
     const session = await auth();
-    // if(!session){
-    //     return NextResponse.json({error:"not authentificated"},{status:401})
-    // }
+    if(!session){
+        return NextResponse.json({error:"not authentificated"},{status:401})
+    }
 
-    const {vehicleName, phone, location, destination, content, imgUrl, selectedCategory, publicId, userEmail, userName, userImg } = await req.json()
-    // const userEmail = session?.user?.email as string
-    // const userName = session?.user?.name as string
-    // const userImg = session?.user?.image as string
+    const {vehicleName, phone, location, destination, content, imgUrl, selectedCategory, publicId } = await req.json()
+    const userEmail = session?.user?.email as string
+    const userName = session?.user?.name as string
+    const userImg = session?.user?.image as string
+
+    console.log(vehicleName, phone, location, destination, content, imgUrl, selectedCategory, publicId)
     
     if(!vehicleName || !phone || !location || !content) {
         return NextResponse.json({error:"Vehicle and Content Are Required"},{status:500})
@@ -38,8 +40,8 @@ export async function POST(req: Request) {
                 destination,
                 content,
                 imgUrl,
-                publicId,
                 catName: selectedCategory,
+                publicId,
                 userEmail,
                 userName,
                 userImg,
