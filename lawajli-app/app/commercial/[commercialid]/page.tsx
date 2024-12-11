@@ -13,11 +13,9 @@ const getDataVehicle = async (vehicleid:string) => {
   return null;
 };
 
-export default async function PrivateVehicleDetail( {params}: {params: {privateid:string}} ) {
-  const itemId = params.privateid
-  console.log(itemId)
+export default async function CommercialVehicleDetail( {params}: {params: {commercialid:string}} ) {
+  const itemId = params.commercialid
   const vehicle = await getDataVehicle(itemId)
-  console.log(vehicle)
 
   return (
     <div className='flex justify-center items-center'>

@@ -36,7 +36,6 @@ export default async function PrivateCar() {
           />
         ))}
       </div>
-      <div className="mt-5 border-t-2 border-b-2 w-[200px] h-[200px] rounded-full animate-bounce"></div>
     </div>
 
   )

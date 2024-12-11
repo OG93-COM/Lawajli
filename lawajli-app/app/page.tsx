@@ -12,7 +12,7 @@ const getAllVehicle = async () => {
   try {
     const res = await axios.get(`${process.env.NEXTAUTH_URL}/api/vehicles/`);
     if (res.status === 200) {
-      return res.data;
+      return res.data.filter((item:TVehicles) => item.status === "Active");
     }
   } catch (error) {
     console.log("Erro Fetch DaTA Front ", error);

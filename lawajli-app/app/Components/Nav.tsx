@@ -4,7 +4,8 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { RxHamburgerMenu } from "react-icons/rx";
-import { CiUser, CiSettings } from "react-icons/ci";
+import { CiUser } from "react-icons/ci";
+import { IoCarSportOutline } from "react-icons/io5";
 import { AiOutlineLogin, AiOutlineLogout } from "react-icons/ai";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { useSession } from 'next-auth/react';
@@ -60,9 +61,9 @@ export default function Nav() {
               <LuLayoutDashboard size={18}/>Dashboard
             </p>
           </Link>
-          <Link href={"#"}>
+          <Link href={"/dashboard/my-vehicles"}>
             <p className='pb-1 hover:text-orange-500 fic'>
-              <CiSettings size={18}/>Setting
+              <IoCarSportOutline size={18}/>My Vehicles
             </p>
           </Link>
         </div>

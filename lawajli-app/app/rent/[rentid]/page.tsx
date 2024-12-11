@@ -13,8 +13,8 @@ const getDataVehicle = async (vehicleid:string) => {
   return null;
 };
 
-export default async function PrivateVehicleDetail( {params}: {params: {privateid:string}} ) {
-  const itemId = params.privateid
+export default async function RentVehicleDetail( {params}: {params: {rentid:string}} ) {
+  const itemId = params.rentid
   console.log(itemId)
   const vehicle = await getDataVehicle(itemId)
   console.log(vehicle)
