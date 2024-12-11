@@ -17,7 +17,7 @@ const getAllVehicle = async () => {
 
 export default async function PrivateCar() {
   const allVehicles = await getAllVehicle()
-  const allPrivateVehicles = await allVehicles.filter((car:TVehicles) => car.catName === "Private")
+  const allPrivateVehicles = await allVehicles.filter((car:TVehicles) => car.catName === "private")
   
   return (
 
@@ -36,6 +36,7 @@ export default async function PrivateCar() {
           />
         ))}
       </div>
+      <div className="mt-5 border-t-2 border-b-2 w-[200px] h-[200px] rounded-full animate-bounce"></div>
     </div>
 
   )

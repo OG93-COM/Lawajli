@@ -32,7 +32,7 @@ export default function Item({car, imgcar, location, clientName, category, id}) 
             </div>
             <div className='text-gray-600 flex justify-end items-center gap-1 mt-2'>
               <IoLocationOutline size={14}/>
-              <p className='max-w-[80px] text-xs font-bold text-nowrap overflow-hidden text-ellipsis'>{location}</p>
+              <p className='max-w-[80px] text-xs font-bold text-nowrap overflow-hidden text-ellipsis hover:text-pretty'>{location}</p>
             </div>
         </div>
     </Link>

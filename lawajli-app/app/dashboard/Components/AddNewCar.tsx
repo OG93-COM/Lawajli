@@ -2,10 +2,12 @@
 
 import { TCategory } from '@/app/types';
 import axios from 'axios';
+import { CldUploadWidget, CloudinaryUploadWidgetResults } from 'next-cloudinary';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { FaRegImages } from 'react-icons/fa';
+import { FcRemoveImage } from 'react-icons/fc';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 
 
@@ -50,13 +52,41 @@ export default function AddNewCar() {
       }
     };
 
+    // const removeImage = async (e:React.FormEvent) => {
+    //   e.preventDefault()
+    //   try {
+    //     const res = await axios.post('api/removeImg', {publicId})
+    //   if(res.status === 200){
+    //     // toast.success('Image removed')
+    //     setPublicId('')
+    //     setImgUrl('')
+    //   }
+    //   } catch (error) {
+    //     console.log("Image Cant be Rremoved ", error)
+    //   }
+    // }
+  
+    const handleImageUpload = (result: CloudinaryUploadWidgetResults) => {
+      console.log("result: ", result);
+      const info = result.info as object;
+  
+      if ("secure_url" in info && "public_id" in info) {
+        const url = info.secure_url as string;
+        const public_id = info.public_id as string;
+        setImgUrl(url);
+        setPublicId(public_id);
+        console.log("url: ", url);
+        console.log("public_id: ", public_id);
+      }
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // if (!vehicleName || !content || !phone || !location) {
+    if (!vehicleName || !content || !phone || !location) {
       
-    //   setError("Title and content Are required");
-    //   return;
-    // } else {setError("")}
+      setError("Title and content Are required");
+      return;
+    } else {setError("")}
     try {
       const res = await axios.post("/api/vehicles", {
         vehicleName,
@@ -86,7 +116,7 @@ export default function AddNewCar() {
         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         id="vehicle"
         type="text"
-        placeholder="Your Car Here... Exp: Passat" 
+        placeholder="Your Car Here... Exp: Passat"
       />
       <div className='flex gap-2'>
         <input
@@ -132,9 +162,42 @@ export default function AddNewCar() {
           </div>
         )}
 
-        <div className="flex flex-col justify-center items-center gap-2 hover:scale-105 duration-300 bg-orange-50 h-28 w-full mt-4 text-orange-400 font-semibold text-xs rounded-xl border border-orange-300 border-dashed cursor-pointer">
-             <FaRegImages size={24} /> Upload Image for the post
-        </div>
+
+        <CldUploadWidget
+          uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
+          onSuccess={(result) => {handleImageUpload}}
+        >
+          {({ open }) => {
+            return (
+              <div
+                onClick={() => open()}
+                className="relative flex flex-col justify-center items-center gap-2 hover:scale-105 duration-300 bg-orange-50 h-28 w-full mt-4 text-orange-400 font-semibold text-xs rounded-xl border border-orange-300 border-dashed cursor-pointer"
+              >
+                <FaRegImages size={24} />
+                Upload Image for the post {imgUrl}
+                {imgUrl && (
+                  <Image
+                    src={imgUrl}
+                    height={200}
+                    width={200}
+                    alt={vehicleName}
+                    className="rounded-xl absolute object-cover inset-0"
+                  />
+                )}
+                {imgUrl}
+              </div>
+            );
+          }}
+        </CldUploadWidget>
+        {/* {publicId && (
+          <div
+            className="flex items-center gap-2 pb-5 cursor-pointer text-red-600 text-sm font-medium "
+            onClick={removeImage}
+          >
+            <FcRemoveImage size={24} className="hover:scale-105" />
+            Remove Image
+          </div>
+        )} */}
 
       <textarea
         onChange={(e)=> setContent(e.target.value)}
