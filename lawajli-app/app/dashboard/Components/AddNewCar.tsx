@@ -52,19 +52,19 @@ export default function AddNewCar() {
       }
     };
 
-    // const removeImage = async (e:React.FormEvent) => {
-    //   e.preventDefault()
-    //   try {
-    //     const res = await axios.post('api/removeImg', {publicId})
-    //   if(res.status === 200){
-    //     // toast.success('Image removed')
-    //     setPublicId('')
-    //     setImgUrl('')
-    //   }
-    //   } catch (error) {
-    //     console.log("Image Cant be Rremoved ", error)
-    //   }
-    // }
+    const removeImage = async (e:React.FormEvent) => {
+      e.preventDefault()
+      try {
+        const res = await axios.post('/api/vehicles/removeImg', {publicId})
+      if(res.status === 200){
+        // toast.success('Image removed')
+        setPublicId('')
+        setImgUrl('')
+      }
+      } catch (error) {
+        console.log("Image Cant be Rremoved ", error)
+      }
+    }
   
     const handleImageUpload = (result: CloudinaryUploadWidgetResults) => {
       console.log("result: ", result);
@@ -165,7 +165,7 @@ export default function AddNewCar() {
 
         <CldUploadWidget
           uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
-          onSuccess={(result) => {handleImageUpload}}
+          onSuccess={(result) => {handleImageUpload(result)}}
         >
           {({ open }) => {
             return (
@@ -174,22 +174,20 @@ export default function AddNewCar() {
                 className="relative flex flex-col justify-center items-center gap-2 hover:scale-105 duration-300 bg-orange-50 h-28 w-full mt-4 text-orange-400 font-semibold text-xs rounded-xl border border-orange-300 border-dashed cursor-pointer"
               >
                 <FaRegImages size={24} />
-                Upload Image for the post {imgUrl}
+                Upload Image for the post
                 {imgUrl && (
                   <Image
                     src={imgUrl}
-                    height={200}
-                    width={200}
+                    fill
                     alt={vehicleName}
                     className="rounded-xl absolute object-cover inset-0"
                   />
                 )}
-                {imgUrl}
               </div>
             );
           }}
         </CldUploadWidget>
-        {/* {publicId && (
+        {publicId && (
           <div
             className="flex items-center gap-2 pb-5 cursor-pointer text-red-600 text-sm font-medium "
             onClick={removeImage}
@@ -197,7 +195,9 @@ export default function AddNewCar() {
             <FcRemoveImage size={24} className="hover:scale-105" />
             Remove Image
           </div>
-        )} */}
+        )}
+  
+
 
       <textarea
         onChange={(e)=> setContent(e.target.value)}
