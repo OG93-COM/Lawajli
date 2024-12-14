@@ -1,6 +1,6 @@
 "use client"
 
-import { TCategory } from '@/app/types';
+import { TCategory, TVehicles } from '@/app/types';
 import axios from 'axios';
 import { CldUploadWidget, CloudinaryUploadWidgetResults } from 'next-cloudinary';
 import Image from 'next/image';
@@ -12,7 +12,7 @@ import { IoIosAddCircleOutline } from 'react-icons/io';
 
 
 
-export default function AddNewCar() {
+export default function EditCar({ vehicle }: { vehicle: TVehicles }) {
 
     const [vehicleName, setVehicleName] = useState("");
     const [phone, setPhone] = useState("");
@@ -42,7 +42,31 @@ export default function AddNewCar() {
         return null;
       };
       getDataCat()
-    },[])
+
+      const initialitionValue = () => {
+        setVehicleName(vehicle.vehicleName);
+        setPhone(vehicle.phone);
+        setLocation(vehicle.location);
+        setDestination(vehicle.destination || []);
+        setContent(vehicle.content);
+        setImgUrl(vehicle.imgUrl || "");
+        setPublicId(vehicle.publicId);
+        setSelectedCategory(vehicle.catName);
+      };
+
+      initialitionValue();
+  }, [
+    vehicle.vehicleName,
+    vehicle.phone,
+    vehicle.location,
+    vehicle.destination,
+    vehicle.content,
+    vehicle.imgUrl,
+    vehicle.publicId,
+    vehicle.catName,
+  ])
+
+
 
     const addDestination = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault();
@@ -83,12 +107,12 @@ export default function AddNewCar() {
     const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!vehicleName || !content || !phone || !location) {
-      
-      setError("Title and content Are required");
+      setError("Content Are required");
       return;
     } else {setError("")}
+
     try {
-      const res = await axios.post("/api/vehicles", {
+      const res = await axios.put(`/api/vehicles/${vehicle.id}`, {
         vehicleName,
         phone,
         location,
@@ -103,16 +127,17 @@ export default function AddNewCar() {
         router.push("/");
       } 
     } catch (err) {
-      setError("Post cant be ceated");
+      setError("Vehicle cant be Updated");
     }
   };
 
   return (
     <div className='min-w-[500px] w-[600px] tic'>
-    <h1 className="title-page">Add new car</h1>
+    <h1 className="title-page">Edit Your Car</h1>
     <form className="p-6" onSubmit={handleSubmit}>
       <input
         onChange={(e) => setVehicleName(e.target.value)}
+        value={vehicleName}
         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         id="vehicle"
         type="text"
@@ -121,6 +146,7 @@ export default function AddNewCar() {
       <div className='flex gap-2'>
         <input
             onChange={(e) => setPhone(e.target.value)}
+            value={phone}
             className="shadow appearance-none border rounded mt-4 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="phone"
             type="number"
@@ -128,6 +154,7 @@ export default function AddNewCar() {
             />
             <input
             onChange={(e) => setLocation(e.target.value)}
+            value={location}
             className="shadow appearance-none border rounded mt-4 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="location"
             type="text"
@@ -183,7 +210,6 @@ export default function AddNewCar() {
                     className="rounded-xl absolute object-cover inset-0"
                   />
                 )}
-
               </div>
             );
           }}
@@ -202,6 +228,7 @@ export default function AddNewCar() {
 
       <textarea
         onChange={(e)=> setContent(e.target.value)}
+        value={content}
         className="shadow appearance-none border rounded w-full mt-4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         id="title"
         rows={5}
@@ -211,6 +238,7 @@ export default function AddNewCar() {
       <div className="my-4">
         <select
         onChange={(e) => setSelectedCategory(e.target.value)}
+        value={selectedCategory}
         className="block appearance-none w-full uppercase bg-white border border-gray-200 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" >
           <option value={""}>Select Category</option>
           {categoryList?.map((item:TCategory) => (
@@ -224,7 +252,7 @@ export default function AddNewCar() {
         className="btn-orange w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         type="submit"
       >
-        Create
+        Update
       </button>
       
     {error && <div className='text-sm font-bold text-red-700 mt-5'>{error}</div>}

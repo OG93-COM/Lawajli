@@ -6,13 +6,14 @@ import React, { useState } from 'react'
 import { IoLocationOutline } from 'react-icons/io5'
 import Item from './Item'
 import { TVehicles } from '../types'
+import Link from 'next/link'
 
 export default function ItemDetails({vehicle}:{vehicle:TVehicles}) {
 
     const [showNumber, setShowNumber] = useState<boolean>(false);
-    
-  return (
 
+
+    return (
     <div>
         {vehicle ? (
             <>
@@ -38,6 +39,9 @@ export default function ItemDetails({vehicle}:{vehicle:TVehicles}) {
                     <p className='text-l font-bold mb-2'>Description :</p>
                     <p>{vehicle.content}</p>
                 </div>
+                <Link href={`/dashboard/edit-vehicle/${vehicle.id}`} className='bg-orange-500 text-md font-bold text-white rounded-lg p-2 w-14 fic justify-center'>
+                    Edit
+                </Link>
             </div>
         </div>
 
