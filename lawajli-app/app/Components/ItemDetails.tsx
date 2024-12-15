@@ -12,7 +12,6 @@ export default function ItemDetails({vehicle}:{vehicle:TVehicles}) {
 
     const [showNumber, setShowNumber] = useState<boolean>(false);
 
-
     return (
     <div>
         {vehicle ? (
