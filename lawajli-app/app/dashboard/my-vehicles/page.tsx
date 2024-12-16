@@ -34,7 +34,7 @@ export default async function MyVehicles() {
     return (
   
       <div className="flex flex-col justify-center lg:mx-48">
-        <h2 className="uppercase text-3xl font-bold mt-10 p-4 text-slate-500">Private</h2>
+        <h2 className="uppercase text-3xl font-bold mt-10 p-4 text-slate-500">My Vehicles :</h2>
         <div className="flex justify-center items-center gap-5 flex-wrap mt-2">
         {myVehicles && myVehicles.map((item:TVehicles, idx:string) => (
             <Item

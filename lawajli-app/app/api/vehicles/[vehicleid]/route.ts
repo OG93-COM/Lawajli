@@ -40,3 +40,19 @@ export async function PUT(req:Request, {params}:{params:{vehicleid:string}}) {
         return NextResponse.json({message:"Vehicle cant be modified ❌"})
     }
 }
+
+export async function DELETE(req:Request, {params}:{params:{vehicleid:string}}) {
+    const session = await auth()
+    if(!session){
+        return NextResponse.json({error:"not authentificated"},{status:401})
+    }
+    
+    const id = params.vehicleid
+    try {
+        const vehicle = await prisma.vehicles.delete({where:{id}})
+        return NextResponse.json(vehicle)
+    } catch (error) {
+        console.log(error)
+        return NextResponse.json({message:"Car can't be deleted ❌"})
+    }
+}
