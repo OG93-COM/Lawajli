@@ -1,3 +1,4 @@
+import { auth } from '@/app/lib/auth';
 import ItemDetails from '../../Components/ItemDetails'
 import axios from 'axios';
 
@@ -16,11 +17,13 @@ const getDataVehicle = async (vehicleid:string) => {
 export default async function CommercialVehicleDetail( {params}: {params: {commercialid:string}} ) {
   const itemId = params.commercialid
   const vehicle = await getDataVehicle(itemId)
+  const session = await auth()
 
   return (
     <div className='flex justify-center items-center'>
         <ItemDetails
         vehicle={vehicle}
+        userEmail={session?.user?.email}
         />
     </div>
   )
