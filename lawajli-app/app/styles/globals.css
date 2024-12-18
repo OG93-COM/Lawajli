@@ -57,7 +57,7 @@ body {
 }
 
 .menu-popup {
-  @apply hidden w-[150px] h-[100px] bg-slate-300 rounded-md lg:right-36 right-5 top-20 z-40 shadow-lg opacity-90 p-4 text-sm text-slate-800 font-semibold
+  @apply hidden px-5  bg-slate-300 rounded-md lg:right-36 right-5 top-20 z-40 shadow-lg opacity-90 p-4 text-sm text-slate-800 font-semibold
 }
 
 .picture-profile {

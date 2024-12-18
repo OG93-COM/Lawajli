@@ -26,8 +26,8 @@ export default function Item({car, imgcar, location, clientName, category, id}) 
         </div>
         <div className='w-full flex justify-between items-start pt-2 px-3'>
             <div className='max-w-[120px]'>
-                <p className='text-gray-600 font-semibold fic text-nowrap overflow-hidden text-ellipsis'><IoCarSportOutline />{car}</p>
-                <p className='text-gray-600 text-sm mt-1 fic gap-2 text-nowrap overflow-hidden text-ellipsis'><TbUserPentagon/> {clientName}</p>
+                <p className='text-gray-600 font-semibold fic '><IoCarSportOutline /><span className='text-nowrap overflow-hidden text-ellipsis'>{car}</span></p>
+                <p className='text-gray-600 text-sm mt-1 fic '><TbUserPentagon/><span className='text-nowrap overflow-hidden text-ellipsis'>{clientName}</span></p>
                 <p className='text-gray-600 text-sm mt-3 cursor-pointer hover:text-orange-400'>View Details</p>
             </div>
             <div className='text-gray-600 flex justify-end items-center gap-1 mt-2'>

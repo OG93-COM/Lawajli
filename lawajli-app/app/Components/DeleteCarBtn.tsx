@@ -34,8 +34,9 @@ const DeleteCarBtn = ({id}:{id:string}) => {
   };
 
   return (
-    <div onClick={handleDelete} className="text-red-500 flex items-center hover:scale-105 duration-300 cursor-pointer">
-      <AiOutlineDelete size={18} color="tomato" /> Delete
+    <div onClick={handleDelete} className="text-white bg-red-500 p-2 rounded-lg flex items-center hover:scale-105 duration-300 cursor-pointer gap-1">
+      <AiOutlineDelete size={18} color="white" />
+      <p>Delete</p>
     </div>
   );
 };

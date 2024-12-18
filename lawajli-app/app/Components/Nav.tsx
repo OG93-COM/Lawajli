@@ -40,15 +40,29 @@ export default function Nav() {
             ):(
             <CiUser size={28} className='cursor-pointer hover:scale-105 duration-300'/>
             )}
-            
             </li>
         </ul>
         <RxHamburgerMenu className='lg:hidden md:hidden text-white' size={32}/>
         <div className={`absolute menu-popup ${togglePop ? "lg:block md:block" : ""}`}>
           {session ? (
-              <p onClick={()=> signOut()} className='pb-1 hover:text-orange-500 fic cursor-pointer'>
-                <AiOutlineLogout size={18}/> LogOut
-              </p>
+              <div>
+                <div className='text-xs pb-2 border-b border-slate-400 mb-2'>
+                  Hi <span className='text-orange-600'>{session?.user?.name}</span> 🤗
+                </div>
+                <Link href={"/dashboard/my-vehicles"}>
+                  <p className='pb-1 hover:text-orange-500 fic'>
+                    <IoCarSportOutline size={18}/>My Vehicles
+                  </p>
+                </Link>
+                <Link href={"/dashboard"}>
+                  <p className='pb-1 hover:text-orange-500 fic'>
+                    <LuLayoutDashboard size={18}/>Dashboard
+                  </p>
+                </Link>
+                <p onClick={()=> signOut()} className='pb-1 hover:text-orange-500 fic cursor-pointer'>
+                  <AiOutlineLogout size={18}/> LogOut
+                </p>
+              </div>
           ):(
             <Link href={"/sign-in"}>
               <p className='pb-1 hover:text-orange-500 fic'>
@@ -56,17 +70,9 @@ export default function Nav() {
               </p>
             </Link>
           )}
-          <Link href={"/dashboard"}>
-            <p className='pb-1 hover:text-orange-500 fic'>
-              <LuLayoutDashboard size={18}/>Dashboard
-            </p>
-          </Link>
-          <Link href={"/dashboard/my-vehicles"}>
-            <p className='pb-1 hover:text-orange-500 fic'>
-              <IoCarSportOutline size={18}/>My Vehicles
-            </p>
-          </Link>
+         
         </div>
+        
     </div>
   )
 }
