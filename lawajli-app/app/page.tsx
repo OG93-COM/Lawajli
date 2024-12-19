@@ -2,10 +2,11 @@ import Image from "next/image";
 import Nav from "./Components/Nav";
 import Header from "./Components/Header";
 import Item from "./Components/Item";
-import { itemPrivate, itemCommercial, itemDelivery, itemRent} from '../data'
+import { FcNext } from "react-icons/fc";
 import Categories from "./Components/Categories";
 import axios from "axios";
 import { TVehicles } from "./types";
+import Link from "next/link";
 
 
 const getAllVehicle = async () => {
@@ -51,6 +52,11 @@ export default async function Home() {
               clientName={item.userName}
               category={item.catName}/>
               ))}
+              {allPrivateVehicles.length < 1 ? ("No Car Found") : (
+                <Link href={"/private-car"} className="fic animate-pulse hover:scale-105 hover:animate-none duration-300">
+                  <FcNext size={48}/>
+                </Link>
+              )}
         </div>
 
       <h2 className="uppercase text-3xl font-bold mt-10 p-4 text-slate-500">Commercial</h2>
@@ -65,7 +71,11 @@ export default async function Home() {
           clientName={item.userName}
           category={item.catName}/>
         ))}
-        {allCommercialVehicles.length < 1 && "No Car Found"}
+        {allCommercialVehicles.length < 1 ? ("No Car Found") : (
+          <Link href={"/commercial"} className="fic animate-pulse hover:scale-105 hover:animate-none duration-300">
+            <FcNext size={48}/>
+          </Link>
+        )}
       </div>
 
       <h2 className="uppercase text-3xl font-bold mt-10 p-4 text-slate-500">Delivery</h2>
@@ -80,7 +90,11 @@ export default async function Home() {
           clientName={item.userName}
           category={item.catName}/>
         ))}
-        {allDeliveryVehicles.length < 1 && "No Car Found"}
+        {allDeliveryVehicles.length < 1 ? ("No Car Found") : (
+          <Link href={"/delivery"} className="fic animate-pulse hover:scale-105 hover:animate-none duration-300">
+            <FcNext size={48}/>
+          </Link>
+        )}
       </div>
 
       <h2 className="uppercase text-3xl font-bold mt-10 p-4 text-slate-500">Rent Car</h2>
@@ -95,7 +109,11 @@ export default async function Home() {
           clientName={item.userName}
           category={item.catName}/>
         ))}
-        {allRentVehicles.length < 1 && "No Car Found"}
+        {allRentVehicles.length < 1 ? ("No Car Found") : (
+          <Link href={"/rent"} className="fic animate-pulse hover:scale-105 hover:animate-none duration-300">
+            <FcNext size={48}/>
+          </Link>
+        )}
       </div>
     </div>
     </>
