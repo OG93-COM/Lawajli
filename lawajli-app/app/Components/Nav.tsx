@@ -1,7 +1,7 @@
 "use client"
 
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { CiUser } from "react-icons/ci";
@@ -15,8 +15,23 @@ import { signOut } from 'next-auth/react';
 
 export default function Nav() {
 
-  const [togglePop , setTogglePop] = useState<boolean>(false)
+  const [menuVisible , setMenuVisible] = useState<boolean>(false)
+  const popupRef = useRef<HTMLDivElement | null>(null);
   const { status, data: session } = useSession();
+
+  useEffect(()=>{
+    const handleClickOutside = (e: MouseEvent) => {
+      if(popupRef.current && !popupRef.current.contains(e.target as Node)) {
+        setMenuVisible(false)
+      }
+    }
+      document.addEventListener('click', handleClickOutside);
+
+      if(!menuVisible){
+        document.removeEventListener('click', handleClickOutside);
+      }
+      return ()=> {document.removeEventListener('click', handleClickOutside);}
+  },[menuVisible])
 
   return (
     <div className='relative w-full flex justify-between md:justify-around lg:justify-around items-center p-5 gap-6'>
@@ -28,7 +43,7 @@ export default function Nav() {
             <li className='hover:text-orange-300 duration-300'><Link href={"/commercial"}>COMMERCIAL</Link></li>
             <li className='hover:text-orange-300 duration-300'><Link href={"/delivery"}>DELIVERY</Link></li>
             <li className='hover:text-orange-300 duration-300'><Link href={"/rent"}>RENT CAR</Link></li>
-            <li onClick={()=> setTogglePop(!togglePop)} className='hover:text-orange-300 duration-300'>
+            <li onClick={()=> setMenuVisible(!menuVisible)} className='hover:text-orange-300 duration-300'>
             {session ? (
               <Image
               src={session?.user?.image || "/user-profile.png"}
@@ -43,7 +58,9 @@ export default function Nav() {
             </li>
         </ul>
         <RxHamburgerMenu className='lg:hidden md:hidden text-white' size={32}/>
-        <div className={`absolute menu-popup ${togglePop ? "lg:block md:block" : ""}`}>
+        <div
+        ref={popupRef}
+        className={`absolute menu-popup ${menuVisible ? "lg:block md:block" : ""}`}>
           {session ? (
               <div>
                 <div className='text-xs pb-2 border-b border-slate-400 mb-2'>
