@@ -10,9 +10,9 @@ export async function GET(){
         return NextResponse.json(allVehicles)
     } catch (error) {
         console.log(error)
-        return NextResponse.json("Get Data Category Failed ❌")
+        return NextResponse.json("Get Data Failed ❌")
     }
-    return NextResponse.json({message: "Get data Category ✅"})
+    return NextResponse.json({message: "Get data Vehicles ✅"})
 }
 
 export async function POST(req: Request) {
