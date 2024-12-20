@@ -4,7 +4,9 @@ import { auth } from "@/app/lib/auth";
 
 export async function GET(){
     try {
-        const allVehicles = await prisma.vehicles.findMany()
+        const allVehicles = await prisma.vehicles.findMany({
+                orderBy:{ createdAt:"desc" }
+    })
         return NextResponse.json(allVehicles)
     } catch (error) {
         console.log(error)
