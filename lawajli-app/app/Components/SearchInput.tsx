@@ -9,7 +9,7 @@ export default function SearchInput() {
     const [location, setLocation] = useState("")
     const [query] = useDebounce(location,500)
     const router = useRouter()
-    
+    console.log(query)
 
     useEffect(()=>{
         if(!query){

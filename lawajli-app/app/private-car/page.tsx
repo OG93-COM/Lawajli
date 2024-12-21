@@ -1,10 +1,8 @@
 
-import React, { useEffect } from 'react'
 import Item from '../Components/Item'
 import axios from 'axios';
 import { TVehicles } from '../types';
 import SearchInput from '../Components/SearchInput';
-import { useSearchParams } from 'next/navigation';
 
 const getAllVehicle = async () => {
   try {
@@ -18,10 +16,21 @@ const getAllVehicle = async () => {
   return null;
 };
 
-export default async function PrivateCar() {
+interface searchProps {
+  searchParams : {
+    search:string;
+  }
+}
+
+export default async function PrivateCar({searchParams}:searchProps) {
+  const {search} = await searchParams
+
   const allVehicles = await getAllVehicle()
   const allPrivateVehicles = await allVehicles.filter((car:TVehicles) => car.catName === "private")
-  
+
+  if(search){
+    var searchVehicles = allPrivateVehicles.filter((car:TVehicles) => car.location.toLowerCase().includes(search.toLowerCase()))
+  }
   
 
   return (
@@ -32,7 +41,20 @@ export default async function PrivateCar() {
       </div>
       <h2 className="uppercase text-3xl font-bold mt-10 p-4 text-slate-500">Private</h2>
       <div className="flex justify-center items-center gap-5 flex-wrap mt-2">
-      {allPrivateVehicles && allPrivateVehicles.map((item:TVehicles, idx:string) => (
+      {allPrivateVehicles && !search ? (
+          allPrivateVehicles.map((item:TVehicles, idx:string) => (
+            <Item
+            key={idx}
+            id={item.id}
+            car={item.vehicleName}
+            imgcar={item.imgUrl}
+            location={item.location}
+            clientName={item.userName}
+            category={item.catName}
+            />
+          ))
+      ) : (
+        searchVehicles.map((item:TVehicles, idx:string) => (
           <Item
           key={idx}
           id={item.id}
@@ -42,7 +64,9 @@ export default async function PrivateCar() {
           clientName={item.userName}
           category={item.catName}
           />
-        ))}
+        ))
+      )
+    }
       </div>
     </div>
 
