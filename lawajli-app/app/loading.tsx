@@ -1,9 +1,9 @@
 
 export default function Loading() {
     return (
-      <div className="p-4 w-[400px] mx-auto">
+      <div className="p-4 w-[400px] mx-auto mt-20 h-[400px] flex flex-col justify-center ">
       <div className="animate-pulse flex space-x-4">
-        <div className="rounded-full bg-slate-200 h-10 w-10"></div>
+        <div className="rounded-full bg-slate-200 h-10 w-10 animate-bounce"></div>
         <div className="flex-1 space-y-6 py-1">
           <div className="h-2 bg-slate-200 rounded"></div>
           <div className="space-y-3">

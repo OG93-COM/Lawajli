@@ -15,9 +15,6 @@ export const metadata:Metadata = {
 export default function PrivateCarLayout({children}: Readonly<{children: React.ReactNode;}>) {
     return (
         <>
-        <div className="blue-gradient mb-20 shadow-xl">
-          <Nav/>
-        </div>
         {children}
         </>
     );

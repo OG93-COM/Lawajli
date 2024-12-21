@@ -33,8 +33,7 @@ export default async function Home() {
 
   return (
     <>
-    <div className="h-[580px] blue-gradient mb-20 shadow-xl">
-      <Nav/>
+    <div className="h-[470px] blue-gradient mb-20 shadow-xl">
       <Header/>
     </div>
     <Categories/>

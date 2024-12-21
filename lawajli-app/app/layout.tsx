@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./styles/globals.css";
 import Footer from "./Components/Footer";
 import { SessionProvider } from "next-auth/react";
+import Nav from "./Components/Nav";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,6 +32,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SessionProvider>
+        <div className="blue-gradient">
+          <Nav/>
+        </div>
         {children}
         <Footer/>
         </SessionProvider>

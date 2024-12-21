@@ -35,7 +35,7 @@ export default async function PrivateCar({searchParams}:searchProps) {
 
   return (
 
-    <div className="flex flex-col justify-center lg:mx-48">
+    <div className="flex flex-col justify-center lg:mx-48 mt-20">
       <div>
         <SearchInput/>
       </div>
