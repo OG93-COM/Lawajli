@@ -23,7 +23,7 @@ interface searchProps {
 }
 
 export default async function PrivateCar({searchParams}:searchProps) {
-  const {search} = await searchParams
+  const {search} = searchParams
 
   const allVehicles = await getAllVehicle()
   const allPrivateVehicles = await allVehicles.filter((car:TVehicles) => car.catName === "private")
@@ -31,7 +31,6 @@ export default async function PrivateCar({searchParams}:searchProps) {
   if(search){
     var searchVehicles = allPrivateVehicles.filter((car:TVehicles) => car.location.toLowerCase().includes(search.toLowerCase()) || car.destination?.toString().toLowerCase().includes(search.toLowerCase()))
   }
-  
 
   return (
 
