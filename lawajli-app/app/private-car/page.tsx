@@ -1,7 +1,7 @@
 
 import Item from '../Components/Item'
 import axios from 'axios';
-import { TVehicles } from '../types';
+import { TVehicles, searchProps } from '../types';
 import SearchInput from '../Components/SearchInput';
 
 const getAllVehicle = async () => {
@@ -16,11 +16,7 @@ const getAllVehicle = async () => {
   return null;
 };
 
-interface searchProps {
-  searchParams : {
-    search:string;
-  }
-}
+
 
 export default async function PrivateCar({searchParams}:searchProps) {
   const {search} = searchParams
@@ -36,7 +32,7 @@ export default async function PrivateCar({searchParams}:searchProps) {
 
     <div className="flex flex-col justify-center lg:mx-48 mt-20">
       <div>
-        <SearchInput/>
+        <SearchInput urlPage={"private-car"}/>
       </div>
       <h2 className="uppercase text-3xl font-bold mt-10 p-4 text-slate-500">Private</h2>
       <div className="flex justify-center items-center gap-5 flex-wrap mt-2">

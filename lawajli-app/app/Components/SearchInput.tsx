@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useDebounce } from "use-debounce";
 
 
-export default function SearchInput() {
+export default function SearchInput({urlPage}:{urlPage:string}) {
     const [location, setLocation] = useState("")
     const [query] = useDebounce(location,500)
     const router = useRouter()
@@ -13,9 +13,9 @@ export default function SearchInput() {
 
     useEffect(()=>{
         if(!query){
-            router.push(`/private-car`)
+            router.push(`/${urlPage}`)
         }else {
-            router.push(`/private-car?search=${query}`)
+            router.push(`/${urlPage}?search=${query}`)
         }
     },[query, router])
 

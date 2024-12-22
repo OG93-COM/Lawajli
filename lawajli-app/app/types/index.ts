@@ -21,3 +21,9 @@ export type TVehicles = {
     publicId: string,
     createdAt: string,
 }
+
+export type searchProps ={
+    searchParams : {
+        search:string;
+      }
+}

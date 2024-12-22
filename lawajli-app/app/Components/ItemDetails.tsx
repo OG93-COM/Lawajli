@@ -9,7 +9,7 @@ import ShowPhoneNumber from './ShowPhoneNumber'
 export default async function ItemDetails({vehicle,userEmail}:{vehicle:TVehicles, userEmail:string|null|undefined}) {
 
     return (
-    <div>
+    <div className='mx-auto my-20'>
         {vehicle ? (
             <>
                 <div className='w-full flex justify-center flex-wrap gap-5 p-2 '>
