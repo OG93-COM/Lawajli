@@ -15,7 +15,7 @@ export default async function Dashboard() {
         redirect("/")
     }
   return (
-    <div className='flex lg:flex-nowrap flex-wrap justify-center lg:mx-48 mx-5 gap-2'>
+    <div className='flex lg:flex-nowrap flex-wrap justify-center lg:mx-48 mx-5 gap-2 mt-20'>
 
       <div className="w-full lg:w-[350px] max-h-[500px] border p-5 rounded-lg flex flex-col justify-start items-center">
           <Image src={session?.user?.image ? session?.user?.image : "/profile-img.png"} width={150} height={150} alt="Profile" className='rounded-full shadow-md border-4 border-slate-100'/>

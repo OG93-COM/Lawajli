@@ -13,11 +13,8 @@ export default async function  SignIn() {
     }
   return (
     <>
-    <div className="h-[580px] blue-gradient mb-20 shadow-xl">
-      <Nav/>
-      <Header/>
-    </div>
-    <div className="w-full  flex flex-col justify-start items-center">
+    
+    <div className="w-full  flex flex-col justify-start items-center mt-20">
         <h1 className="text-3xl font-bold mb-10">Login to your account</h1>
         <SignInBtn/>
     </div>

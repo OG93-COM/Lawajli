@@ -43,9 +43,10 @@ export default function Nav() {
             <li className='hover:text-orange-300 duration-300'><Link href={"/commercial"}>COMMERCIAL</Link></li>
             <li className='hover:text-orange-300 duration-300'><Link href={"/delivery"}>DELIVERY</Link></li>
             <li className='hover:text-orange-300 duration-300'><Link href={"/rent"}>RENT CAR</Link></li>
-            <li onClick={()=> setMenuVisible(!menuVisible)} className='hover:text-orange-300 duration-300'>
+            <li  className='hover:text-orange-300 duration-300'>
             {session ? (
               <Image
+              onClick={()=> setMenuVisible(!menuVisible)}
               src={session?.user?.image || "/user-profile.png"}
               width={36}
               height={36}
@@ -53,7 +54,9 @@ export default function Nav() {
               className="picture-profile"
             />
             ):(
-            <CiUser size={28} className='cursor-pointer hover:scale-105 duration-300'/>
+            <Link href={"/sign-in"}>
+              <CiUser size={28} className='cursor-pointer hover:scale-105 duration-300'/>
+            </Link>
             )}
             </li>
         </ul>
@@ -61,7 +64,7 @@ export default function Nav() {
         <div
         ref={popupRef}
         className={`absolute menu-popup ${menuVisible ? "lg:block md:block" : ""}`}>
-          {session ? (
+          {session && (
               <div>
                 <div className='text-xs pb-2 border-b border-slate-400 mb-2'>
                   Hi <span className='text-orange-600'>{session?.user?.name}</span> 🤗
@@ -80,12 +83,6 @@ export default function Nav() {
                   <AiOutlineLogout size={18}/> LogOut
                 </p>
               </div>
-          ):(
-            <Link href={"/sign-in"}>
-              <p className='pb-1 hover:text-orange-500 fic'>
-              <AiOutlineLogin size={18}/> Login
-              </p>
-            </Link>
           )}
          
         </div>
