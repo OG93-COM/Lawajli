@@ -1,11 +1,8 @@
-import Nav from '../Components/Nav'
-import Header from '../Components/Header'
 import { auth } from '../lib/auth';
 import Image from 'next/image';
 import LogoutBtn from '../Components/LogoutBtn';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import MyVehicles from './my-vehicles/page';
 
 export default async function Dashboard() {
 
@@ -14,6 +11,7 @@ export default async function Dashboard() {
     if(!session) {
         redirect("/")
     }
+
   return (
     <div className='flex lg:flex-nowrap flex-wrap justify-center lg:mx-48 mx-5 gap-2 mt-20'>
 
