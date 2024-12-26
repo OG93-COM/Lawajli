@@ -39,7 +39,7 @@ export default function Nav() {
   },[menuVisible])
 
   return (
-    <div className='relative w-full flex justify-between md:justify-around lg:justify-around items-center p-5 gap-6'>
+    <div className='relative fixed w-full flex justify-between md:justify-around lg:justify-around items-center p-5 gap-6'>
         <Link href={"/"} className='pl-5'>
             <Image src={'/logo.png'} width={140} height={120} alt='logo'/>
         </Link>
@@ -67,8 +67,8 @@ export default function Nav() {
         </ul>
 
         {/* Menu Responsive  */}
-        <div  className='lg:hidden md:hidden z-50'>
-          <div className={` absolute bg-slate-100 h-[400px] w-[50%] top-24 opacity-90 p-5 rounded-l-xl duration-500 ${responsiveMenuVisible ? "block right-0" : "right-[-100%]"}`}>
+        <div  className='lg:hidden md:hidden z-50 shadow-lg'>
+          <div className={` absolute bg-slate-100 h-[400px] w-[50%] top-24 opacity-95 p-5 rounded-l-xl duration-500 ${responsiveMenuVisible ? "block right-0" : "right-[-100%]"}`}>
             <ul className=' flex flex-col  gap-5 font-bold'>
               {session && <li className=' duration-300 border-b pb-3'>Hi <span className='text-orange-600'>{session?.user?.name}</span> 🤗</li>}
               <li className='hover:text-orange-300 duration-300'><Link href={"/private-car"}>PRIVATE</Link></li>
