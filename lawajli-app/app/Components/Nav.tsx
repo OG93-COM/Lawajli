@@ -69,9 +69,9 @@ export default function Nav() {
         {/* Menu Responsive  */}
         <div  className='lg:hidden md:hidden z-50 shadow-lg'>
           <div className={` absolute bg-slate-100 h-[400px] w-[50%] top-24 opacity-95 p-5 rounded-l-xl duration-500 ${responsiveMenuVisible ? "block right-0" : "right-[-100%]"}`}>
-            <ul className=' flex flex-col  gap-5 font-bold'>
+            <ul className=' flex flex-col  gap-2 font-bold'>
               {session && <li className=' duration-300 border-b pb-3'>Hi <span className='text-orange-600'>{session?.user?.name}</span> 🤗</li>}
-              <li className='hover:text-orange-300 duration-300'><Link href={"/private-car"}>PRIVATE</Link></li>
+              <li className='hover:text-orange-300 duration-300 p-2 rounded-lg hover:bg-orange-200'><Link href={"/private-car"}>PRIVATE</Link></li>
               <li className='hover:text-orange-300 duration-300'><Link href={"/commercial"}>COMMERCIAL</Link></li>
               <li className='hover:text-orange-300 duration-300'><Link href={"/delivery"}>DELIVERY</Link></li>
               <li className='hover:text-orange-300 duration-300'><Link href={"/rent"}>RENT CAR</Link></li>

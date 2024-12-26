@@ -15,7 +15,7 @@ export default async function NewVehicle() {
     }
   return (
     <>
-    <div className="w-full h-[600px] flex flex-col justify-center items-center">
+    <div className="w-full h-[600px] flex flex-col justify-center items-center mt-24">
         <AddNewCar/>
     </div>
     </>

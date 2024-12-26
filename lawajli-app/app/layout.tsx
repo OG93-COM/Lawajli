@@ -32,10 +32,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SessionProvider>
-        <div className="blue-gradient">
+        <div className="blue-gradient fixed w-full z-50 top-0">
           <Nav/>
         </div>
+        <main className="py-24">
         {children}
+        </main>
         <Footer/>
         </SessionProvider>
       </body>
