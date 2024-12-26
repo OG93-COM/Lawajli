@@ -10,26 +10,31 @@ import { AiOutlineLogin, AiOutlineLogout } from "react-icons/ai";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { useSession } from 'next-auth/react';
 import { signOut } from 'next-auth/react';
+import { RiCloseLargeLine } from "react-icons/ri";
+
 
 
 
 export default function Nav() {
 
   const [menuVisible , setMenuVisible] = useState<boolean>(false)
+  const [responsiveMenuVisible , setResponsiveMenuVisible] = useState<boolean>(false)
   const popupRef = useRef<HTMLDivElement | null>(null);
   const { status, data: session } = useSession();
 
   useEffect(()=>{
     const handleClickOutside = (e: MouseEvent) => {
-      if(popupRef.current && !popupRef.current.contains(e.target as Node)) {
+      if(popupRef.current && !popupRef.current.contains(e.target as Node) ) {
         setMenuVisible(false)
       }
+
     }
       document.addEventListener('click', handleClickOutside);
 
       if(!menuVisible){
         document.removeEventListener('click', handleClickOutside);
       }
+
       return ()=> {document.removeEventListener('click', handleClickOutside);}
   },[menuVisible])
 
@@ -60,7 +65,47 @@ export default function Nav() {
             )}
             </li>
         </ul>
-        <RxHamburgerMenu className='lg:hidden md:hidden text-white' size={32}/>
+
+        {/* Menu Responsive  */}
+        <div  className='lg:hidden md:hidden z-50'>
+          <div className={` absolute bg-slate-100 h-[400px] w-[50%] top-24 opacity-90 p-5 rounded-l-xl duration-500 ${responsiveMenuVisible ? "block right-0" : "right-[-100%]"}`}>
+            <ul className=' flex flex-col  gap-5 font-bold'>
+              {session && <li className=' duration-300 border-b pb-3'>Hi <span className='text-orange-600'>{session?.user?.name}</span> 🤗</li>}
+              <li className='hover:text-orange-300 duration-300'><Link href={"/private-car"}>PRIVATE</Link></li>
+              <li className='hover:text-orange-300 duration-300'><Link href={"/commercial"}>COMMERCIAL</Link></li>
+              <li className='hover:text-orange-300 duration-300'><Link href={"/delivery"}>DELIVERY</Link></li>
+              <li className='hover:text-orange-300 duration-300'><Link href={"/rent"}>RENT CAR</Link></li>
+              {session && (
+                <li className=' duration-300 border-t py-3 bottom-0 absolute'>
+
+                  <Link href={"/dashboard/my-vehicles"}>
+                    <p className='pb-1 hover:text-orange-500 fic'>
+                      <IoCarSportOutline size={18}/>My Vehicles
+                    </p>
+                  </Link>
+                  <Link href={"/dashboard"}>
+                    <p className='pb-1 hover:text-orange-500 fic'>
+                      <LuLayoutDashboard size={18}/>Dashboard
+                    </p>
+                  </Link>
+                  <p onClick={()=> signOut()} className='pb-1 hover:text-orange-500 fic cursor-pointer'>
+                    <AiOutlineLogout size={18}/> LogOut
+                  </p>
+                </li>
+              )}
+            </ul>
+          </div>
+
+          <div onClick={()=> setResponsiveMenuVisible(!responsiveMenuVisible)} className='text-white cursor-pointer duration-500'>
+            {responsiveMenuVisible ? (
+              <RiCloseLargeLine  size={32}/>
+            ):(
+            <RxHamburgerMenu  size={32}/>
+            )}
+          </div>
+        </div>
+
+        {/* Login Icon Section */}
         <div
         ref={popupRef}
         className={`absolute menu-popup ${menuVisible ? "lg:block md:block" : ""}`}>
