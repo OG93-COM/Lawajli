@@ -39,7 +39,7 @@ export default function Nav() {
   },[menuVisible])
 
   return (
-    <div className='relative fixed w-full flex justify-between md:justify-around lg:justify-around items-center p-5 gap-6'>
+    <div className='relative w-full flex justify-between md:justify-around lg:justify-around items-center p-5 gap-6'>
         <Link href={"/"} className='pl-5'>
             <Image src={'/logo.png'} width={140} height={120} alt='logo'/>
         </Link>
