@@ -67,3 +67,8 @@ body {
 .title-page {
   @apply mx-10 tracking-tight text-sky-900 text-xl font-semibold
 }
+
+.page-link-menu-responsive {
+  @apply hover:text-orange-50 duration-300 py-1 px-2 rounded-lg hover:bg-orange-500 cursor-pointer hover:animate-pulse border-l-2
+}
+
