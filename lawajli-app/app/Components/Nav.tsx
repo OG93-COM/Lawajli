@@ -33,9 +33,9 @@ export default function Nav() {
       if (responsiveMenuRef.current && !responsiveMenuRef.current.contains(e.target as Node) && responsiveMenuVisible ) {
         setResponsiveMenuVisible(false);
       }
-
     }
-      document.addEventListener('click', handleClickOutside);
+
+    document.addEventListener('click', handleClickOutside);
 
       return ()=> {document.removeEventListener('click', handleClickOutside);}
   },[menuVisible, responsiveMenuVisible])
