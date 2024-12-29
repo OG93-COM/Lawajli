@@ -6,6 +6,7 @@ import { TbUserPentagon } from "react-icons/tb";
 
 export default function Item({car, imgcar, location, clientName, category, id}) {
 
+  // change text to link function 
   const selectedCat = ()=>{
     if(category === "Private" ||  category === "private"){
       return "private-car"
