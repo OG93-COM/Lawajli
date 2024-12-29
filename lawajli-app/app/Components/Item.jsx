@@ -6,7 +6,7 @@ import { TbUserPentagon } from "react-icons/tb";
 
 export default function Item({car, imgcar, location, clientName, category, id}) {
 
-  // change text to link function 
+  // change text to link function
   const selectedCat = ()=>{
     if(category === "Private" ||  category === "private"){
       return "private-car"
@@ -19,7 +19,7 @@ export default function Item({car, imgcar, location, clientName, category, id}) 
     }
   }
   const catLink = selectedCat()
-  
+
   return (
     <Link href={`/${catLink}/${id}`} className='item flex flex-col justify-start items-center'>
         <div className='relative w-full rounded-t-full h-[229px]'>
