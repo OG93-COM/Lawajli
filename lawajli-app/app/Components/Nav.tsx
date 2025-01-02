@@ -13,8 +13,6 @@ import { signOut } from 'next-auth/react';
 import { RiCloseLargeLine } from "react-icons/ri";
 
 
-
-
 export default function Nav() {
 
   const [menuVisible , setMenuVisible] = useState<boolean>(false)
@@ -132,9 +130,7 @@ export default function Nav() {
                 </p>
               </div>
           )}
-         
         </div>
-        
     </div>
   )
 }
