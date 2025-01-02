@@ -18,7 +18,6 @@ export default async function NavProfile() {
                 ):(
                     <CiUser size={28} className='cursor-pointer hover:scale-105 duration-300'/>
             )}
-            
             {session ? (
                 <Image
                 src={session?.user?.image || "/user-profile.png"}
@@ -30,7 +29,6 @@ export default async function NavProfile() {
                 ):(
                     <CiUser size={28} className='cursor-pointer hover:scale-105 duration-300'/>
                     )}
-           
                     </>
   )
 }
