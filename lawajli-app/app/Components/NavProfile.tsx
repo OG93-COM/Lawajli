@@ -3,6 +3,7 @@ import { auth } from '../lib/auth'
 import { CiUser } from 'react-icons/ci'
 import Image from 'next/image'
 
+
 export default async function NavProfile() {
     const session = await auth()
   return (
